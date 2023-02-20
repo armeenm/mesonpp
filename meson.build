@@ -23,13 +23,11 @@ main_ctg = custom_target(
 
 main_pp = cc.preprocess(
   main_ctg,
-  output: '@PLAINNAME@.c',
-  compile_args: ['-C', '-x', 'c'],
 )
 
 main_gen = generator(
   find_program(files('generator.py')),
-  output: '@PLAINNAME@.c',
+  output: '@BASENAME@.c',
   arguments: '@INPUT@',
   capture: true,
 )
